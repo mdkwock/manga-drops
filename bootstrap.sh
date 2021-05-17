@@ -55,7 +55,8 @@ SQL
 
 install 'Nokogiri dependencies' libxml2 libxml2-dev libxslt1-dev
 install 'Blade dependencies' libncurses5-dev
-curl -fsSL https://deb.nodesource.com/setup_14.x | check_result 'Update NodeJS sources' sudo -E bash - 
+curl -fsSL https://deb.nodesource.com/setup_14.x 
+sudo -E bash - 
 install 'NodeJS' nodejs yarn
 
 # To generate guides in Kindle format.
@@ -88,10 +89,10 @@ EOF
 echo '--- Project setup ---'
 source $HOME/.bashrc
 cd /manga-drops
-gem install rails
-check_result 'bundle install' bundle install
-check_result 'yarn install' yarn install --check-files
-check_result 'rails db:reset' bin/rails db:reset
+sudo gem install rails
+bundle install
+yarn install --check-files
+bin/rails db:reset
 
 echo '~~~ Ready! ~~~'
 
