@@ -8,4 +8,10 @@ class MangaController < ApplicationController
         end
         render json: Manga.all
     end
+
+    def subscribe(user_id, manga_id)
+        user = User.find(user_id)
+        manga = Manga.find(manga_id)
+        user.mangas << manga
+    end
 end

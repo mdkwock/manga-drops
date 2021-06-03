@@ -14,6 +14,8 @@ ActiveRecord::Schema.define(version: 2021_06_01_225915) do
 
   create_table "chapters", force: :cascade do |t|
     t.integer "manga_id", null: false
+    t.integer "vol"
+    t.integer "chap"
     t.string "url"
     t.datetime "Upload_date"
     t.datetime "created_at", precision: 6, null: false
@@ -24,6 +26,7 @@ ActiveRecord::Schema.define(version: 2021_06_01_225915) do
   create_table "mangas", force: :cascade do |t|
     t.string "title"
     t.string "url"
+    t.integer "latest_chapter"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
