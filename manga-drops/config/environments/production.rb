@@ -61,8 +61,26 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "manga_drops_production"
+  # config.action_mailer.perform_caching = false
 
-  config.action_mailer.perform_caching = false
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.preview_path = "#{Rails.root}/tmp/mailers/previews"
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.mailgun.org',
+    port: 587,
+    domain: 'sandboxa212871c0fa949c0852be9f6a4e5d82f.mailgun.org',
+    user_name: 'postmaster@sandboxa212871c0fa949c0852be9f6a4e5d82f.mailgun.org',
+    password: 'b51e7134704fbe94185db1796ac6a15b-90ac0eb7-fdfaea79',
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
+  config.action_mailer.default_url_options = {
+    host: '',
+    port: 587,
+    protocol: 'http'
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
